@@ -2,6 +2,7 @@ import { Options } from './type/options';
 import { logger } from './util/log';
 import { hub, EventBus } from "./util/hub";
 import { Page } from "./page";
+import { Global } from "./global";
 
 const defaultOptions: Options = {
     getPage: true,
@@ -11,6 +12,7 @@ const defaultOptions: Options = {
     date: undefined
 }
 
+let globalIns:Global
 let pageIns: Page
 export const init = (options: Options, fn: Function) => {
     // 合并默认参数
@@ -21,6 +23,13 @@ export const init = (options: Options, fn: Function) => {
         logger.enable();
     }
     logger.log('start logging ...');
+    if(options.getError === true){
+        globalIns = new Global({
+            sendError:options.getError,
+            // sendUnhandledRejection:options.getUnhandledRejection,
+            sendUnloadError:options.getUnloadError
+        })
+    }
     if (options.getPage === true) {
         pageIns = new Page()
     }

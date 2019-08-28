@@ -1,6 +1,6 @@
-window.onerror = () => {
-  console.warn("old error");
-};
+// window.onerror = () => {
+//   console.warn("old error");
+// };
 
 /**
  * test hub
@@ -61,18 +61,16 @@ window.onerror = () => {
  * test page performance
  */
 
-window.WebSentrySDK.hub.on("GET_PERFORMANCE", data => {
-  console.warn(data);
-});
+// window.WebSentrySDK.hub.on("GET_PERFORMANCE", data => {
+//   console.warn(data);
+// });
 
 window.WebSentrySDK.init(
   {
     debug: true,
-    sendError: false,
+    getPage: true,
+    getError: true,
     outtime: 3000,
-    blacklistUrls: [
-      // 'localhost:8080/examples'
-    ],
     data: {
       webUser: {
         id: 12345
@@ -85,6 +83,7 @@ window.WebSentrySDK.init(
     //   headers: { "Content-Type": "application/json" },
     //   body: JSON.stringify(data)
     // });
-    console.log(JSON.stringify(date))
+    // console.log(JSON.stringify(date))
   }
 );
+error;
