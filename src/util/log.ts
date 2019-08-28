@@ -38,6 +38,7 @@ class Logger {
 
 }
 
+//保证全局单例
 global.__WebSentryGlobal__ = global.__WebSentryGlobal__ || {};
-const logger = global.__WebSentryGlobal__.hub || (global.__WebSentryGlobal__.hub = new Logger(PREFIX));
+const logger = global.__WebSentryGlobal__.logger || (global.__WebSentryGlobal__.logger = new Logger(PREFIX));
 export { logger };
